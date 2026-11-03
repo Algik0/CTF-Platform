@@ -1,0 +1,6 @@
+# Teil der Phase-3-Schwachstelle: secure_path wird für diesen Nutzer
+# deaktiviert, wodurch system()-Aufrufe ohne absoluten Pfad in
+# vault_backup per PATH-Hijacking übernommen werden können.
+Defaults:lupin_associate !secure_path
+
+lupin_associate ALL=(root) NOPASSWD: /usr/local/bin/vault_backup

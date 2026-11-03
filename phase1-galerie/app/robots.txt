@@ -1,0 +1,8 @@
+# Maison d'Ermont -- intern
+# TODO (Webmaster, 2026): Pfade hier eintragen, die nicht indexiert werden
+# sollen -- NICHT als Zugriffsschutz missverstehen!
+# (Anm. Praktikant: robots.txt ist kein Zaun, Chef. Das hab ich schon
+#  dreimal gesagt. Niemand hoert mir zu. -- M.)
+User-agent: *
+Disallow: /admin_backup/
+Disallow: /api/

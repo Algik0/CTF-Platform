@@ -1,0 +1,15 @@
+┌──────────────────────────────────────────────┐
+│               ARSÈNE LUPIN                     │
+│           Gentleman-Cambrioleur                │
+│                                                 │
+│   "Man merkt nie, dass man beraubt wurde --    │
+│    bis man es merkt."                          │
+└──────────────────────────────────────────────┘
+
+P.S. an den Baron: Die Nocturne war wirklich nicht
+     schwer zu finden. Vielleicht mal ein Schloss
+     von diesem Jahrhundert probieren?
+
+P.P.S. an Ganimard, falls Sie das hier lesen:
+       `strings` ist Ihr Freund. Benutzen Sie ihn
+       öfter. Und grüßen Sie Ihre Frau von mir.

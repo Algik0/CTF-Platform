@@ -1,0 +1,5 @@
+# PyCA cryptography -- etablierte, auditierte Standard-Bibliothek für
+# AES/PBKDF2 (https://github.com/pyca/cryptography). Kein
+# Typosquatting-Risiko (offizieller, eindeutiger Paketname auf PyPI),
+# aktiv maintained, breite Verwendung in Produktionssystemen.
+cryptography>=42,<51
