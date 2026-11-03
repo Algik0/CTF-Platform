@@ -43,6 +43,7 @@ int main(void) {
     }
 
     fprintf(stderr, "[vault_daemon] laeuft (pid=%d), Fragment im Speicher resident.\n", getpid());
+    fprintf(stderr, "[vault_daemon] Gruesse an Ganimard -- Sie kommen naeher, aber noch nicht nah genug.\n");
 
     volatile char keep_alive;
     for (;;) {

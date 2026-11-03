@@ -1,5 +1,8 @@
-# "dermont-target" -- Gesamt-Image für alle vier Phasen von
+# "dermont-target" -- Gesamt-Image fuer alle vier Phasen von
 # "Das Erbe von Cagliostro" (siehe docs/ARCHITECTURE.md).
+#
+# Security-Budget des Barons: 0 EUR fuer Patches, unbegrenzt fuer
+# Champagner. Das erklaert einiges.
 #
 # Build-Kontext ist das REPO-ROOT (nicht infra/), da Dateien aus allen
 # phaseX-*/-Ordnern kopiert werden:
@@ -56,12 +59,16 @@ COPY phase4-tresor/crypto/ /opt/vault/crypto/
 COPY phase4-tresor/build/ /opt/vault/build/
 
 # --- SSH-Hardening -----------------------------------------------------
+# (Banner ist bewusst VOR der Authentifizierung sichtbar -- reine
+# Atmosphaere, keine Informationsoffenlegung.)
+COPY infra/lupin-banner.txt /etc/lupin-banner.txt
 RUN mkdir -p /run/sshd \
     && { \
         echo "PermitRootLogin no"; \
         echo "PasswordAuthentication no"; \
         echo "KbdInteractiveAuthentication no"; \
         echo "AllowUsers ganimard lupin_associate"; \
+        echo "Banner /etc/lupin-banner.txt"; \
     } >> /etc/ssh/sshd_config
 
 # --- Entrypoint ---------------------------------------------------------

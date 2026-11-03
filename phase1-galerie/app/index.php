@@ -48,5 +48,7 @@ $pieces = [
   dieser Seite.</p>
 </main>
 <footer>&copy; Maison d'Ermont — Alle Rechte vorbehalten (angeblich).</footer>
+<!-- Lupin war hier. Wer gut genug sucht, findet seine Karte in der Galerie. -->
+<!-- -- der Praktikant, der diesen Kommentar nicht löschen sollte -->
 </body>
 </html>

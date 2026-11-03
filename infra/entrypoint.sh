@@ -72,6 +72,28 @@ chmod 640 /etc/dermont-config/service-accounts.json
 rm -f /tmp/id_ganimard /tmp/id_ganimard.pub /tmp/id_lupin_associate /tmp/id_lupin_associate.pub
 log "Phase-1-Config geschrieben (/etc/dermont-config/service-accounts.json)."
 
+# Easter Egg: ein voellig harmloser, aber im Charakter geschriebener
+# "abgefangener" Chat zwischen Baron und Butler -- ueber dieselbe LFI
+# erreichbar, liefert aber keine Credentials. Reine Belohnung fuers
+# genaue Hinsehen (siehe docs/writeup, Abschnitt "Easter Eggs").
+cat > /etc/dermont-config/chat_backup.log <<'CHATEOF'
+[22:14] Baron: Hat Ganimard wieder angerufen?
+[22:15] Butler: Ja, Baron. Dreimal.
+[22:15] Baron: Sag ihm, ich bin in Monaco.
+[22:16] Butler: Sie sind seit drei Jahren in Monaco.
+[22:16] Baron: Eben. Konsistenz ist wichtig.
+[22:30] Butler: Jemand hat versucht, unsere Config ueber die
+                Preview-API zu lesen.
+[22:31] Baron: Das ist doch sicher, oder?
+[22:31] Butler: Nein.
+[22:31] Baron: Aendere trotzdem nichts, wir haben Urlaub gebucht.
+[22:45] Butler: Soll ich wenigstens das Backup-Tool absichern?
+[22:46] Baron: Welches Backup-Tool?
+[22:46] Butler: Genau.
+CHATEOF
+chown root:www-data /etc/dermont-config/chat_backup.log
+chmod 644 /etc/dermont-config/chat_backup.log
+
 # ---------------------------------------------------------------------
 # 4) Phase 2: cipher_stamp mit per-Deployment-Key neu kompilieren
 # ---------------------------------------------------------------------

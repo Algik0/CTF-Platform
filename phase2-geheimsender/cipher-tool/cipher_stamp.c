@@ -9,6 +9,10 @@
  *
  * Absichtlich für Reversing-Übungen gebaut: der Schlüssel liegt im
  * Klartext im .rodata-Segment und ist mit `strings` sofort sichtbar.
+ *
+ * Dies ist die STANDALONE-Variante mit festem Testschlüssel (für den
+ * isolierten Dockerfile-Build dieser Phase). Die echte, pro Deployment
+ * zufällige Variante ist cipher_stamp.c.tmpl + infra/entrypoint.sh.
  */
 #include <stdio.h>
 #include <unistd.h>
@@ -16,7 +20,11 @@
 static const unsigned char LUPIN_FIELD_KEY[] = "C4GL10"; /* 6 Byte -- viel zu kurz */
 #define KEY_LEN 6
 
+static const char TAUNT[] = "Salut Ganimard. Sie sind wieder zu langsam.";
+
 int main(void) {
+    fprintf(stderr, "[cipher_stamp] %s\n", TAUNT);
+
     unsigned char buf[65536];
     ssize_t n;
     size_t ctr = 0;

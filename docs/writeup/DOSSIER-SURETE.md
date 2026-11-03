@@ -392,6 +392,29 @@ Alle übrigen Komponenten (PHP, Apache, OpenSSH, sudo, SQLite, GCC)
 sind Standard-Distributionspakete ohne zusätzliches
 Typosquatting-/Wartungsrisiko.
 
+## 8. Easter Eggs (Bonus, nicht Teil der Bewertung)
+
+Für die Atmosphäre und zur Erbauung versteckt, keine davon ist für die
+Lösung einer Phase notwendig:
+
+| Fundort | Inhalt |
+|---|---|
+| `GET /irgendwas-das-404-wirft` | Themenpassende 404-Seite mit Lupin-Zitat |
+| `?img=.carte_de_visite.txt` (Phase 1) | Lupins klassische Visitenkarte, inkl. Seitenhieb an Ganimard |
+| `?img=/etc/dermont-config/chat_backup.log` (Phase 1, selbe LFI) | Fingierter Chat Baron ↔ Butler, reine Komödie, keine Credentials |
+| `ssh ... @TARGET` (vor dem Login) | ASCII-Banner, Lupin grüßt |
+| `strings /opt/lupin/cipher_stamp` bzw. Containerlogs | Spruch an Ganimard ("zu langsam") -- zusätzlich zum echten Schlüssel |
+| `vault_backup`-Output bei Erfolg | Kommentar zum ahnungslosen Baron |
+| `vault_daemon`-Logs | Weiterer Gruß an Ganimard |
+| HTML-Quelltext von `index.php` | Versteckter Kommentar eines "Praktikanten" als Hinweis auf die Visitenkarte |
+| `geheimsender`-Nachrichten | Zwei zusätzliche Flavor-Zeilen (u. a. Selbstkritik zu `cipher_stamp`) |
+
+Für Studierende, die diese bemerken: viel Spaß, aber sie zählen nicht
+in die Bewertung ein.
+
 ---
 
 *Ende des Dossiers. — Inspektor Ganimard, Sûreté, für den Dienstgebrauch.*
+*(Der Verfasser bittet um Verständnis, falls sich im Dokument der eine
+oder andere Insider-Scherz eingeschlichen hat. Die Ermittlungen leiden
+dadurch nicht — hoffentlich.)*

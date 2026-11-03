@@ -33,6 +33,8 @@ FLAVOR = [
     "Das Rendezvous bleibt wie besprochen, gleiche Stelle.",
     "Die Tresorkombination wechselt wöchentlich, Vorsicht beim nächsten Schritt.",
     "Noch zwei Nächte, dann ist die Sammlung unser.",
+    "Ganimard glaubt immer noch, 6 Zeichen seien ein sicherer Schlüssel.",
+    "Erinnerung an mich selbst: cipher_stamp endlich mal ersetzen. (seit 2019)",
 ]
 
 

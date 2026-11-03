@@ -51,6 +51,7 @@ int main(int argc, char **argv) {
         fprintf(stderr, "[vault_backup] Warnung: Sicherung fehlgeschlagen (rc=%d)\n", rc);
     } else {
         printf("[vault_backup] Sicherung abgeschlossen.\n");
+        printf("[vault_backup] Der Baron waere stolz. Falls er wuesste, dass es dieses Tool gibt.\n");
     }
     return 0;
 }
