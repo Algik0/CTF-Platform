@@ -55,6 +55,30 @@ chmod 600 /run/secrets/id_lupin_associate
 log "SSH-Keypairs für ganimard/lupin_associate erzeugt."
 
 # ---------------------------------------------------------------------
+# 2b) Easter Egg: Ganimards Bash-History -- rein statische Flavor-Texte,
+#     KEINE echten Hinweise/Secrets. Wer als ganimard einloggt und aus
+#     Gewohnheit "history" tippt, findet eine kleine Bloßstellung.
+# ---------------------------------------------------------------------
+cat > /home/ganimard/.bash_history <<'HISTEOF'
+cat /etc/shadow
+sudo cat /etc/shadow
+sudo -l
+ls -la /root
+find / -iname "*flag*" 2>/dev/null
+find / -iname "*tresor*" 2>/dev/null
+cat /opt/vault/data
+man lupin
+apt-get install lupin-finder
+echo "Chef wird das nicht gefallen..."
+whoami
+history | grep passwort
+exit
+HISTEOF
+chown ganimard:ganimard /home/ganimard/.bash_history
+chmod 644 /home/ganimard/.bash_history
+log "Easter Egg: Ganimards .bash_history platziert."
+
+# ---------------------------------------------------------------------
 # 3) Phase 1: Service-Account-Config außerhalb des Webroots
 #    (das ist das Ziel der LFI aus preview.php -- siehe dort für die
 #    Begründung, warum NICHT /proc/self/environ verwendet wird)
