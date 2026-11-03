@@ -25,11 +25,15 @@ echo "[setup-vm] Entferne ggf. alten Container ..."
 docker rm -f dermont-target >/dev/null 2>&1 || true
 
 echo "[setup-vm] Starte Container (restart=always, Ports 80/22 direkt auf die VM) ..."
-# --cap-drop bewusst NICHT gesetzt -- root im Container braucht die
-# Standard-Ptrace-Fähigkeiten für Phase 4 (/proc/<pid>/mem).
+# --cap-drop bewusst NICHT gesetzt. CAP_SYS_PTRACE wird zusaetzlich EXPLIZIT
+# hinzugefuegt -- Dockers Default-Capability-Set enthaelt SYS_PTRACE NICHT.
+# Ohne diese Capability blockt Yamas ptrace_scope den /proc/<pid>/mem-Zugriff
+# aus Phase 4 auch fuer UID 0 im Container (SUID-root reicht dafuer nicht,
+# verifiziert gegen eine echte laufende Instanz).
 docker run -d \
     --name dermont-target \
     --restart=always \
+    --cap-add=SYS_PTRACE \
     -p 80:80 \
     -p 22:22 \
     dermont-target
