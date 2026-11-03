@@ -1,0 +1,14 @@
+# Kompilate (werden beim Docker-Build bzw. Containerstart erzeugt)
+*.o
+phase2-geheimsender/cipher-tool/cipher_stamp
+phase3-maskerade/vault_backup
+phase4-tresor/daemon/vault_daemon
+__pycache__/
+*.pyc
+
+# Lokale Solve-Artefakte (Keys/Secrets, nie committen)
+**/solve/id_ganimard
+**/solve/id_lupin_associate
+**/solve/*.pem
+**/solve/vault_fragment_*.txt
+*.db.enc

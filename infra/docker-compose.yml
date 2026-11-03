@@ -1,0 +1,25 @@
+# Lokales Testen/Entwickeln OHNE die volle VM-Hülle.
+# Build-Kontext ist das Repo-Root (siehe Dockerfile-Kommentar).
+#
+# Nutzung:
+#   docker compose -f infra/docker-compose.yml up --build
+#
+# Erreichbar danach:
+#   http://localhost:8080        (Phase 1)
+#   ssh -p 2222 ganimard@localhost -i <per-Deployment-Key, s. Writeup>
+#
+# WICHTIG: --cap-drop nicht setzen (oder zumindest CAP_SYS_PTRACE nicht
+# droppen) -- Phase 4 braucht root-Ptrace-Rechte für /proc/<pid>/mem.
+services:
+  dermont-target:
+    build:
+      context: ..
+      dockerfile: infra/Dockerfile
+    ports:
+      - "8080:80"
+      - "2222:22"
+    # DEPLOY_SEED optional: fester Wert für reproduzierbare lokale Tests.
+    # In echten Deployments weglassen, damit jede Instanz eigene Secrets hat.
+    # environment:
+    #   - DEPLOY_SEED=local-dev-fixed-seed
+    restart: unless-stopped
